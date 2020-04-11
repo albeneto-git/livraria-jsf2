@@ -11,6 +11,7 @@ public class UsuarioDao {
 
 		try {
 			EntityManager em = new JPAUtil().getEntityManager();
+			@SuppressWarnings("unused")
 			Usuario result = em.createQuery("select u from Usuario u where u.email = :email and u.senha = :senha", Usuario.class)
 					.setParameter("email", usuario.getEmail())
 					.setParameter("senha", usuario.getSenha())
