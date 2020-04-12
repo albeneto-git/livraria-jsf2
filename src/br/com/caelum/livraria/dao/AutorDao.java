@@ -8,6 +8,7 @@ import javax.inject.Inject;
 import javax.persistence.EntityManager;
 
 import br.com.caelum.livraria.modelo.Autor;
+import br.com.caelum.livraria.modelo.Livro;
 
 public class AutorDao implements Serializable{
 
@@ -43,5 +44,4 @@ public class AutorDao implements Serializable{
 	public void remove(Autor autor) {
 		this.autorDao.remove(autor);
 	}
-
 }

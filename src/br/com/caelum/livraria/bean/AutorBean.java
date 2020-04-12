@@ -17,7 +17,7 @@ public class AutorBean implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@Inject
-	private AutorDao dao;	// cdi faz new AutorDao() e injeta
+	private AutorDao autorDao;	// cdi faz new AutorDao() e injeta
 
 	private Autor autor = new Autor();
 	private Integer autorId;
@@ -36,7 +36,7 @@ public class AutorBean implements Serializable{
 	}
 
 	public void carregarAutorPeloId() {
-		this.autor = this.dao.buscaPorId(autorId);
+		this.autor = this.autorDao.buscaPorId(autorId);
 		if (this.autor == null) {
 			this.autor = new Autor();
 		}
@@ -46,9 +46,9 @@ public class AutorBean implements Serializable{
 		System.out.println("Gravando autor " + this.autor.getNome());
 
 		if (this.autor.getId() == null) {
-			this.dao.adiciona(this.autor);
+			this.autorDao.adiciona(this.autor);
 		} else {
-			this.dao.atualiza(this.autor);
+			this.autorDao.atualiza(this.autor);
 		}
 
 		this.autor = new Autor();
@@ -58,7 +58,7 @@ public class AutorBean implements Serializable{
 	}
 
 	public List<Autor> getAutores() {
-		return this.dao.listaTodos();
+		return this.autorDao.listaTodos();
 	}
 
 	public void carregar(Autor autor) {
@@ -66,9 +66,6 @@ public class AutorBean implements Serializable{
 	}
 		
 	public void remover(Autor autor) {
-		if(1==2) {
-			this.dao.remove(autor);
-		}
+		this.autorDao.remove(autor);
 	}
-
 }
