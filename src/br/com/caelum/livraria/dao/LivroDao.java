@@ -8,6 +8,7 @@ import javax.inject.Inject;
 import javax.persistence.EntityManager;
 
 import br.com.caelum.livraria.modelo.Livro;
+import br.com.caelum.livraria.tx.Log;
 
 public class LivroDao implements Serializable{
 
@@ -36,6 +37,7 @@ public class LivroDao implements Serializable{
 		livroDao.atualiza(t);
 	}
 
+	@Log
 	public List<Livro> listaTodos() {
 		return livroDao.listaTodos();
 	}
