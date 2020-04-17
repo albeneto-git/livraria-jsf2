@@ -19,7 +19,7 @@
 	</ui:define>
 
 	<ui:define name="conteudo">
-		<h:form>
+		<h:form id="formLivro">
 			<h:messages id="messages" />
 			<p:fieldset legend="Dados do Livro">
 				<p:panelGrid columns="2">
@@ -128,15 +128,12 @@
 				</p:column>
 
 				<p:column headerText="Alterar">
-					<h:commandLink value="Alterar">
-						<f:setPropertyActionListener target="#{livroBean.livro}"
-							value="#{livro}" />
-					</h:commandLink>
-				</p:column>
-
+					<p:commandButton update=":formLivro" process="@this" value="alterar" actionListener="#{livroBean.carregar(livro)}" icon="fa fa-fw fa-edit" />
+				</p:column>					
+				
 				<p:column headerText="Remover">
-					<h:commandLink value="Remover" action="#{livroBean.remover(livro)}" />
-				</p:column>
+					<p:commandButton update="@form" process="@this" value="remover" actionListener="#{livroBean.remover(livro)}" icon="fa fa-fw fa-remove" />
+				</p:column>	
 
 			</p:dataTable>
 		</h:form>

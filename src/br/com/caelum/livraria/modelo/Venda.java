@@ -1,25 +1,47 @@
 package br.com.caelum.livraria.modelo;
 
-public class Venda {
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
+@Entity
+public class Venda {
+	
+	
+	@Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+
+    @ManyToOne
     private Livro livro;
     private Integer quantidade;
+    
+    public Venda() {
+    }
 
+    
+    
     public Venda(Livro livro, Integer quantidade) {
-        this.livro = livro;
-        this.quantidade = quantidade;
-    }
+    	this.livro = livro;
+    	this.quantidade = quantidade;
+	}
 
-    public Livro getLivro() {
-        return livro;
+	public Livro getLivro() {
+    	return livro;
     }
+    
     public void setLivro(Livro livro) {
-        this.livro = livro;
+    	this.livro = livro;
     }
+    
     public Integer getQuantidade() {
-        return quantidade;
+    	return quantidade;
     }
+    
     public void setQuantidade(Integer quantidade) {
-        this.quantidade = quantidade;
+    	this.quantidade = quantidade;
     }
+    
 }
